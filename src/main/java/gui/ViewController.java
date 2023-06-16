@@ -1,29 +1,32 @@
 package gui;
 
 import java.io.IOException;
-import java.util.Random;
-import javafx.scene.Node;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import jogador.Pontuacao;
+import niveis.GerarNivelDificuldade;
+import niveis.NivelDificuldade;
 
 public class ViewController {
 
-	Random gerador = new Random();
-	float userAnswer, result, num1, num2;
-	int pontos = 0; // configurar uma classe pra guardar pontos
-	int tipoDeConta;
-	Conta conta;
-	String nomeusuario;
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
+
+	private int nivelEscolhido;
+	private NivelDificuldade nivelDificuldade;
+	private float userAnswer, result;
+	private String nomeusuario;
+	private Pontuacao pontos = new Pontuacao();
 
 	public ViewController() {
 
@@ -53,39 +56,23 @@ public class ViewController {
 	@FXML
 	Label labelPontos = new Label();
 
-	public void bemVindo(String username) {
+	public void bemVindo(String username, int numeroSelecionado) {
 		labelNome.setText(username + ", calcule:");
+		nomeusuario = username;             // pegou nome do jogador
+		nivelEscolhido = numeroSelecionado; // pegou nivel que jogador selecionou
 		gerarPergunta();
-		nomeusuario = username;
+
 	}
-	
-	@FXML
+
 	public void gerarPergunta() {
 
-		num1 = gerador.nextInt(10) + 1;
-		num2 = gerador.nextInt(10) + 1;
-		tipoDeConta = gerador.nextInt(4); // num aleatorio pra gerar o tipo de conta
+		GerarNivelDificuldade gerarNivel = new GerarNivelDificuldade(nivelEscolhido);
+		nivelDificuldade = gerarNivel.gerar();
 
-		// padrao strategy
-		if (tipoDeConta == 0) {
-			conta = new Soma();
-		}
+		nivelDificuldade.geraPergunta();       // gera pergunta a partir do nivel selecionado
+		result = nivelDificuldade.Resultado(); //pegou o resultado correto da conta
 
-		else if (tipoDeConta == 1) {
-			conta = new Dividir();
-		}
-
-		else if (tipoDeConta == 2) {
-			conta = new Subtrair();
-		}
-
-		else if (tipoDeConta == 3) {
-			conta = new Multiplicar();
-		}
-
-		result = conta.getResult();
-
-		questionLabel.setText(conta.conta(num1, num2)); // Define a pergunta na interface
+		questionLabel.setText(nivelDificuldade.pergunta()); // Define a pergunta na interface
 	}
 
 	@FXML
@@ -94,34 +81,40 @@ public class ViewController {
 		labelResult.setText(""); // esvazia campo de resultado
 		txtResult.clear();
 	}
-	
-	//chamado depois de pressionar botão Responder
-	
+
+	// chamado depois de pressionar botão Responder
+
 	public void verificaResposta() {
+
 		userAnswer = Float.parseFloat(txtResult.getText());
 
-		if (userAnswer == conta.getResult()) {
+		VerificaResposta verificaResposta = new VerificaResposta(userAnswer, result);
+		int x = verificaResposta.verificar();
+
+		if (x == 1) { // se a resposta for correta o verificaRespota retorna x = 1
 			labelResult.setText("Resposta correta!");
-			pontos = pontos + 1; // verificar isso aqui
+			pontos.pontua();
 
-		} else if (userAnswer != conta.getResult()) {
-			labelResult.setText("Resposta incorreta! A resposta correta é: " + conta.resultadoFormat());
+		} else if (x == 0) {
+			labelResult.setText("Resposta incorreta! A resposta correta é: " + nivelDificuldade.ResultadoTexto());
 		}
-	}	
+	}
 
+	@FXML
 	public void onBtFinalizar(ActionEvent event) throws IOException {
 
 		FXMLLoader login = new FXMLLoader(getClass().getResource("ViewFinal.fxml"));
 		root = login.load();
 
 		ViewResultado viewresultado = login.getController();
-		viewresultado.setResultado(nomeusuario, pontos); //passando para a última tela com resultado
-				
+
+		// passando para a última tela com resultado
+		viewresultado.setResultado(nomeusuario, pontos.getPontos());
+
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
 	}
-	
 
 }

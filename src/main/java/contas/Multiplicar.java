@@ -1,8 +1,16 @@
-package gui;
+package contas;
 
 public class Multiplicar implements Conta{
 	
 	private float result;
+	int num1, num2;
+	
+	public Multiplicar(int num1, int num2) {
+		result = num1 * num2;
+		this.num1 = num1;
+		this.num2 = num2;
+	}
+	
 
 	public String conta(float x, float y) {
 		this.result = (x * y);
@@ -19,6 +27,12 @@ public class Multiplicar implements Conta{
 		return String.format("%.0f", this.result);
 	}
 
-
+	public int getNum1() {
+		return num1;
+	}
+	
+	public int getNum2() {
+		return num2;
+	}
 
 }

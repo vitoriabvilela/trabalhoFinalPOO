@@ -1,5 +1,4 @@
-package gui;
-
+package jogador;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -11,6 +10,7 @@ public class GamerDAO {
 		
 	}
 
+	//classe para persistir a classe Gamer no banco de dados
 	public void salvarJogador(Gamer gamer) {
 
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("game-jpa");

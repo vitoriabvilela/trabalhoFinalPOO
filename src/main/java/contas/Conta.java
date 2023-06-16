@@ -1,4 +1,4 @@
-package gui;
+package contas;
 
 public interface Conta {
 

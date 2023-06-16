@@ -1,4 +1,4 @@
-package gui;
+package jogador;
 
 public class CriarJogador {
 	
