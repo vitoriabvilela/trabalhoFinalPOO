@@ -12,15 +12,17 @@ public class NivelDificil implements NivelDificuldade {
 
 	Conta conta;
 	Random gerador = new Random();
-	int num1, num2;
+	float num1, num2;
 
 	public NivelDificil() {
 
 	}
-
+	
+	//nivel dificil tem numeros de 1 ao 100 e contas de soma, subtracao, divisao e multiplicacao
+	
 	public Conta geraPergunta() {
-		num1 = gerador.nextInt(20) + 1;
-		num2 = gerador.nextInt(20) + 1;
+		num1 = gerador.nextInt(100) + 1;
+		num2 = gerador.nextInt(100) + 1;
 		int tipoDeConta = gerador.nextInt(4); // num aleatorio pra gerar o tipo de conta
 
 		// padrao strategy

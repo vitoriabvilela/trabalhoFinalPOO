@@ -104,6 +104,7 @@ public class ViewController {
 		} else if (x == 0) {
 			labelResult.setText("Resposta incorreta! A resposta correta é: " + nivelDificuldade.ResultadoTexto());
 		}
+		questionLabel.setText(""); //retira a pergunta depois do jogador clicar em responder
 	}
 
 	@FXML

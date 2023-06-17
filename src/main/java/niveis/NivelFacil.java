@@ -10,12 +10,14 @@ public class NivelFacil implements NivelDificuldade {
 
 	Conta conta;
 	Random gerador = new Random();
-	int num1, num2;
+	float num1, num2;
 
 	public NivelFacil() {
 
 	}
-
+	
+	//nivel facil tem apenas numeros de 1 ao 5 e soma e subtracao 
+	
 	public Conta geraPergunta() {
 		num1 = gerador.nextInt(5) + 1;
 		num2 = gerador.nextInt(5) + 1;

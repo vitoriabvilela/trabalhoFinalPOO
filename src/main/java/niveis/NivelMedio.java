@@ -12,12 +12,14 @@ public class NivelMedio implements NivelDificuldade {
 
 	Conta conta;
 	Random gerador = new Random();
-	int num1, num2;
+	float num1, num2;
 
 	public NivelMedio() {
 
 	}
-
+	
+	//nivel medio tem numeros de 1 ao 10 e contas de soma, subtracao, divisao e multiplicacao
+	
 	public Conta geraPergunta() {
 		num1 = gerador.nextInt(10) + 1;
 		num2 = gerador.nextInt(10) + 1;

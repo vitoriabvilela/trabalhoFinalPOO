@@ -3,9 +3,9 @@ package contas;
 public class Dividir implements Conta{
 	
 	private float result;
-	int num1, num2;
+	float num1, num2;
 	
-	public Dividir(int num1, int num2) {
+	public Dividir(float num1, float num2) {
 		result = (num1/num2);
 		this.num1 = num1;
 		this.num2 = num2;
@@ -25,11 +25,11 @@ public class Dividir implements Conta{
 		return String.format("%.2f", this.result);
 	}
 	
-	public int getNum1() {
+	public float getNum1() {
 		return num1;
 	}
 	
-	public int getNum2() {
+	public float getNum2() {
 		return num2;
 	}
 
