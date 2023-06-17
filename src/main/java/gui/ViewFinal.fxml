@@ -6,22 +6,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="171.0" prefWidth="332.0" style="-fx-background-color: #c78fff;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/20.0.1" fx:controller="gui.ViewResultado">
+<AnchorPane prefHeight="171.0" prefWidth="332.0" style="-fx-background-color: #c78fff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ViewResultado">
    <children>
-      <Label fx:id="labelResultado" alignment="CENTER" layoutX="15.0" layoutY="86.0" prefHeight="18.0" prefWidth="302.0" text="teste" textAlignment="CENTER" textFill="#c6f3ff" textOverrun="CENTER_ELLIPSIS">
+      <Label fx:id="labelResultado" alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="76.0" prefHeight="18.0" prefWidth="302.0" textAlignment="CENTER" textFill="#c6f3ff" textOverrun="CENTER_ELLIPSIS">
          <font>
             <Font name="Yu Gothic Bold" size="12.0" />
          </font>
       </Label>
-      <ImageView fitHeight="55.0" fitWidth="183.0" layoutX="75.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="55.0" fitWidth="183.0" layoutX="76.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Users/vitor/OneDrive/Área%20de%20Trabalho/Faculdade/4º%20PERÍODO/POO%202/imagens_trabalhoPOO2/math%20game%20logo.png" />
+            <Image url="@imagens/math%20game%20logo.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="56.0" fitWidth="58.0" layoutX="276.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="42.0" fitWidth="93.0" layoutX="123.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Users/vitor/OneDrive/Área%20de%20Trabalho/Faculdade/4º%20PERÍODO/POO%202/imagens_trabalhoPOO2/math%20simbolos.png" />
+            <Image url="@imagens/estrelas.png" />
          </image>
       </ImageView>
    </children>

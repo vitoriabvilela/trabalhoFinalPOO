@@ -11,10 +11,11 @@ public class NivelFacil implements NivelDificuldade {
 	Conta conta;
 	Random gerador = new Random();
 	int num1, num2;
-	
+
 	public NivelFacil() {
-		
+
 	}
+
 	public Conta geraPergunta() {
 		num1 = gerador.nextInt(5) + 1;
 		num2 = gerador.nextInt(5) + 1;
@@ -25,22 +26,21 @@ public class NivelFacil implements NivelDificuldade {
 			return conta = new Soma(num1, num2);
 		}
 
-		else if(tipoDeConta == 1) {
+		else if (tipoDeConta == 1) {
 			return conta = new Subtrair(num1, num2);
-		}
-		else return null;
+		} else
+			return null;
 	}
 	
 	public float Resultado() {
-		return conta.getResult();
-	}
-	
-	public String pergunta() {
-		return conta.conta(num1, num2);
-	}
-	
-	public String ResultadoTexto() {
-		return conta.resultadoFormat();
+		return this.conta.getResult();
 	}
 
+	public String pergunta() {
+		return this.conta.conta(num1, num2);
+	}
+
+	public String ResultadoTexto() {
+		return this.conta.resultadoFormat();
+	}
 }

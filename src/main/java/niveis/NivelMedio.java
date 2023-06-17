@@ -35,17 +35,17 @@ public class NivelMedio implements NivelDificuldade {
 		else
 			return null;
 	}
-
+	
 	public float Resultado() {
-		return conta.getResult();
+		return this.conta.getResult();
 	}
 
 	public String pergunta() {
-		return conta.conta(num1, num2);
+		return this.conta.conta(num1, num2);
 	}
 
 	public String ResultadoTexto() {
-		return conta.resultadoFormat();
+		return this.conta.resultadoFormat();
 	}
 
 }

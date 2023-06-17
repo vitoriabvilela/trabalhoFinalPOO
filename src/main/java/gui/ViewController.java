@@ -27,6 +27,8 @@ public class ViewController {
 	private float userAnswer, result;
 	private String nomeusuario;
 	private Pontuacao pontos = new Pontuacao();
+	private int pontuacao = 0;
+	private String exibirPontos;
 
 	public ViewController() {
 
@@ -93,8 +95,12 @@ public class ViewController {
 
 		if (x == 1) { // se a resposta for correta o verificaRespota retorna x = 1
 			labelResult.setText("Resposta correta!");
-			pontos.pontua();
-
+					
+			pontuacao = pontos.pontua(); //passa os pontos para um int pontuacao
+			exibirPontos =  String.valueOf(pontuacao);
+			
+			labelPontos.setText(exibirPontos);
+			
 		} else if (x == 0) {
 			labelResult.setText("Resposta incorreta! A resposta correta é: " + nivelDificuldade.ResultadoTexto());
 		}
