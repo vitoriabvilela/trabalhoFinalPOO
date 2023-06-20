@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import jogador.CriarJogador;
 import jogador.Pontuacao;
+import observer.LabelRecorde;
+import observer.RecordePontuacao;
 
 public class ViewResultado{
 	

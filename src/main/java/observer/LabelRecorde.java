@@ -1,4 +1,4 @@
-package gui;
+package observer;
 
 public class LabelRecorde implements Observer {
 

@@ -1,6 +1,6 @@
 package jogador;
 
-import gui.Observer;
+import observer.Observer;
 
 public class Pontuacao implements Observer {
 	
