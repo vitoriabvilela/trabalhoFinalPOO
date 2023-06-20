@@ -1,6 +1,8 @@
 package jogador;
 
-public class Pontuacao {
+import gui.Observer;
+
+public class Pontuacao implements Observer {
 	
 	int pontos = 0; 
 	
@@ -12,4 +14,10 @@ public class Pontuacao {
 	public int getPontos() {
 		return pontos;
 	}
+	
+	public void notify(int pontuacao) {
+		System.out.println("Novo recorde: " + pontuacao);
+	}
+	
+	
 }

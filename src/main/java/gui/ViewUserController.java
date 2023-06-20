@@ -50,7 +50,20 @@ public class ViewUserController implements Initializable {
 		numbers = FXCollections.observableArrayList(list);
 		caixaNivel.setItems(numbers);
 	}
-
+	
+	//só permitir iniciar o jogo se o jogador digitar o nome e selecionar o nivel
+	public void onKeyReleasead() {
+		
+		boolean nomeVazio = txtUser.getText().isEmpty();
+		boolean nivelVazio = caixaNivel.getSelectionModel().isEmpty();
+		
+		if (nomeVazio || nivelVazio) {
+			btIniciar.setDisable(true);
+		}
+		else btIniciar.setDisable(false);
+	}
+	
+	
 	@FXML
 	public void onIniciarButton(ActionEvent event) throws IOException {
 
@@ -60,7 +73,8 @@ public class ViewUserController implements Initializable {
 		//vai para segunda tela do jogo View
 		FXMLLoader login = new FXMLLoader(getClass().getResource("View.fxml")); 
 		root = login.load();
-
+		
+		
 		ViewController viewcontroller = login.getController();
 		viewcontroller.bemVindo(username, selectedNumber);
 

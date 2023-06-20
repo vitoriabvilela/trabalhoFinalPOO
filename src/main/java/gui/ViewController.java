@@ -41,7 +41,7 @@ public class ViewController {
 	private Button btSum;
 
 	@FXML
-	private Button btCalcule;
+	private Button btContinuar;
 
 	@FXML
 	private Button btFinalizar;
@@ -75,6 +75,7 @@ public class ViewController {
 		result = nivelDificuldade.Resultado(); //pegou o resultado correto da conta
 
 		questionLabel.setText(nivelDificuldade.pergunta()); // Define a pergunta na interface
+		btSum.setDisable(false);       //habilitou o botão responder
 	}
 
 	@FXML
@@ -82,12 +83,13 @@ public class ViewController {
 		gerarPergunta();
 		labelResult.setText(""); // esvazia campo de resultado
 		txtResult.clear();
+		btContinuar.setDisable(true);
 	}
 
-	// chamado depois de pressionar botão Responder
 
-	public void verificaResposta() {
-
+	public void onBtResponder() {
+		
+		//pegou a resposta do jogador
 		userAnswer = Float.parseFloat(txtResult.getText());
 
 		VerificaResposta verificaResposta = new VerificaResposta(userAnswer, result);
@@ -104,9 +106,13 @@ public class ViewController {
 		} else if (x == 0) {
 			labelResult.setText("Resposta incorreta! A resposta correta é: " + nivelDificuldade.ResultadoTexto());
 		}
+		
 		questionLabel.setText(""); //retira a pergunta depois do jogador clicar em responder
+		txtResult.setText("");    //depois que o usuario responder esvazia a resposta dele 
+		btSum.setDisable(true);
+		btContinuar.setDisable(false);
 	}
-
+	
 	@FXML
 	public void onBtFinalizar(ActionEvent event) throws IOException {
 
@@ -122,6 +128,9 @@ public class ViewController {
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
+		
+
+			
 	}
 
 }

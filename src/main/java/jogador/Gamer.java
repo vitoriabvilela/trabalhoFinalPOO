@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
 @Entity
 public class Gamer implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -41,5 +42,8 @@ public class Gamer implements Serializable {
 	public void setPontos(int pontos) {
 		this.pontos = pontos;
 	}
-
+	
+	
+	
+	
 }

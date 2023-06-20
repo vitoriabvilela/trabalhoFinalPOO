@@ -30,8 +30,8 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <TextField fx:id="txtUser" alignment="TOP_LEFT" layoutX="58.0" layoutY="109.0" prefHeight="26.0" prefWidth="210.0" promptText="Insira seu user para iniciar o game" />
-      <Button fx:id="btIniciar" alignment="CENTER" contentDisplay="CENTER" layoutX="137.0" layoutY="218.0" mnemonicParsing="false" onAction="#onIniciarButton" style="-fx-background-color: #c78fff;" text="Iniciar" textAlignment="CENTER" textFill="#8000ff" textOverrun="CENTER_ELLIPSIS">
+      <TextField fx:id="txtUser" alignment="TOP_LEFT" layoutX="58.0" layoutY="109.0" onKeyReleased="#onKeyReleasead" prefHeight="26.0" prefWidth="210.0" promptText="Insira seu user para iniciar o game" />
+      <Button fx:id="btIniciar" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="137.0" layoutY="218.0" mnemonicParsing="false" onAction="#onIniciarButton" style="-fx-background-color: #c78fff;" text="Iniciar" textAlignment="CENTER" textFill="#8000ff" textOverrun="CENTER_ELLIPSIS">
          <font>
             <Font name="Yu Gothic Bold" size="12.0" />
          </font>
@@ -43,7 +43,7 @@
             <Font name="Yu Gothic Bold" size="14.0" />
          </font>
       </Label>
-      <ComboBox fx:id="caixaNivel" layoutX="58.0" layoutY="165.0" prefHeight="26.0" prefWidth="93.0" promptText="Selecione" />
+      <ComboBox fx:id="caixaNivel" layoutX="58.0" layoutY="165.0" onAction="#onKeyReleasead" onDragDone="#onKeyReleasead" onMouseDragReleased="#onKeyReleasead" onMouseDragged="#onKeyReleasead" onTouchReleased="#onKeyReleasead" prefHeight="26.0" prefWidth="93.0" promptText="Selecione" />
       <Label contentDisplay="CENTER" layoutX="58.0" layoutY="147.0" prefHeight="18.0" prefWidth="150.0" text="Nível de Dificuldade" textAlignment="CENTER" textFill="#c78fff" textOverrun="CENTER_ELLIPSIS">
          <font>
             <Font name="Yu Gothic Bold" size="14.0" />
