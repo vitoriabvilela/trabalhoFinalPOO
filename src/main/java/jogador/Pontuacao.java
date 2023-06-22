@@ -19,5 +19,4 @@ public class Pontuacao implements Observer {
 		System.out.println("Novo recorde: " + pontuacao);
 	}
 	
-	
 }

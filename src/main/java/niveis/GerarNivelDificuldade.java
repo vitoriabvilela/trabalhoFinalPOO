@@ -9,7 +9,7 @@ public class GerarNivelDificuldade {
 		this.NivelSelecionado = x;
 	}
 	
-	//verificar se encaixa como padrão strategy
+	//padrão strategy
 	public NivelDificuldade gerar(){
 				
 		if (NivelSelecionado == 1) {

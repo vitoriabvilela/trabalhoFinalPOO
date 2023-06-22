@@ -32,23 +32,25 @@ public class ViewUserController implements Initializable {
 	@FXML
 	private Button btIniciar;
 
-	ObservableList<Integer> numbers;
+	ObservableList<NivelComboBox> numbers;
 
 	@FXML
-	ComboBox<Integer> caixaNivel;
+	ComboBox<NivelComboBox> caixaNivel;
 
 	public void initialize(URL url, ResourceBundle rb) {
 		carregarNiveis();
 	}
+	
+	//cadastro de opções que aparecem no ComboBox para usuario selecionar o nível desejado
+	public void carregarNiveis() {		
+		List<NivelComboBox> list = new ArrayList<>();
+		
+	    list.add(new NivelComboBox(1, "Nível 1 - Fácil"));
+	    list.add(new NivelComboBox(2, "Nível 2 - Médio"));
+	    list.add(new NivelComboBox(3, "Nível 3 - Difícil"));
 
-	public void carregarNiveis() {
-		List<Integer> list = new ArrayList<>();
-		list.add(1);
-		list.add(2);
-		list.add(3);
-
-		numbers = FXCollections.observableArrayList(list);
-		caixaNivel.setItems(numbers);
+	    numbers = FXCollections.observableArrayList(list);
+	    caixaNivel.setItems(numbers);
 	}
 	
 	//só permitir iniciar o jogo se o jogador digitar o nome e selecionar o nivel
@@ -57,6 +59,7 @@ public class ViewUserController implements Initializable {
 		boolean nomeVazio = txtUser.getText().isEmpty();
 		boolean nivelVazio = caixaNivel.getSelectionModel().isEmpty();
 		
+		//se o campo de nome ou nivel estiver vazio o botão iniciar fica desabilitado
 		if (nomeVazio || nivelVazio) {
 			btIniciar.setDisable(true);
 		}
@@ -68,7 +71,7 @@ public class ViewUserController implements Initializable {
 	public void onIniciarButton(ActionEvent event) throws IOException {
 
 		String username = txtUser.getText();
-		int selectedNumber = caixaNivel.getSelectionModel().getSelectedItem();
+		int selectedNumber = caixaNivel.getSelectionModel().getSelectedItem().getValor();
 		
 		//vai para segunda tela do jogo View
 		FXMLLoader login = new FXMLLoader(getClass().getResource("View.fxml")); 
