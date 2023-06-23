@@ -39,15 +39,15 @@ public class NivelDificil implements NivelDificuldade {
 	}
 	
 	public float Resultado() {
-		return this.conta.getResult();
+		return conta.getResult();
 	}
 
 	public String pergunta() {
-		return this.conta.conta(num1, num2);
+		return conta.conta(num1, num2);
 	}
 
 	public String ResultadoTexto() {
-		return this.conta.resultadoFormat();
+		return conta.resultadoFormat();
 	}
 
 }

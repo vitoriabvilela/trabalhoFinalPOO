@@ -31,14 +31,20 @@ public class ViewUserController implements Initializable {
 
 	@FXML
 	private Button btIniciar;
-
-	ObservableList<NivelComboBox> numbers;
-
+	
+	@FXML 
+	ComboBox<EscolhaTimerBox> caixaCronometro;
+	
 	@FXML
 	ComboBox<NivelComboBox> caixaNivel;
+ 
+	ObservableList<NivelComboBox> numbers;
+	ObservableList<EscolhaTimerBox> escolhaCronometro;
+
 
 	public void initialize(URL url, ResourceBundle rb) {
 		carregarNiveis();
+		carregarEscolhaCronometro();
 	}
 	
 	//cadastro de opções que aparecem no ComboBox para usuario selecionar o nível desejado
@@ -53,14 +59,27 @@ public class ViewUserController implements Initializable {
 	    caixaNivel.setItems(numbers);
 	}
 	
+	public void carregarEscolhaCronometro(){
+		
+		List<EscolhaTimerBox> list2 = new ArrayList<>();
+		
+		list2.add(new EscolhaTimerBox(1, "Sim, quero cronômetro."));
+		list2.add(new EscolhaTimerBox(0, "Não quero cronômetro."));
+		
+		escolhaCronometro = FXCollections.observableArrayList(list2);
+		caixaCronometro.setItems(escolhaCronometro);
+	}	
+	
+	
 	//só permitir iniciar o jogo se o jogador digitar o nome e selecionar o nivel
 	public void onKeyReleasead() {
 		
 		boolean nomeVazio = txtUser.getText().isEmpty();
 		boolean nivelVazio = caixaNivel.getSelectionModel().isEmpty();
+		boolean cronometroVazio = caixaCronometro.getSelectionModel().isEmpty();
 		
 		//se o campo de nome ou nivel estiver vazio o botão iniciar fica desabilitado
-		if (nomeVazio || nivelVazio) {
+		if (nomeVazio || nivelVazio || cronometroVazio) {
 			btIniciar.setDisable(true);
 		}
 		else btIniciar.setDisable(false);
@@ -72,6 +91,7 @@ public class ViewUserController implements Initializable {
 
 		String username = txtUser.getText();
 		int selectedNumber = caixaNivel.getSelectionModel().getSelectedItem().getValor();
+		int escolhaCronometro = caixaCronometro.getSelectionModel().getSelectedItem().getValor();
 		
 		//vai para segunda tela do jogo View
 		FXMLLoader login = new FXMLLoader(getClass().getResource("View.fxml")); 
@@ -79,7 +99,7 @@ public class ViewUserController implements Initializable {
 		
 		
 		ViewController viewcontroller = login.getController();
-		viewcontroller.bemVindo(username, selectedNumber);
+		viewcontroller.bemVindo(username, selectedNumber, escolhaCronometro);
 
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
