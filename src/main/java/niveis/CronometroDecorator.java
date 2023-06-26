@@ -13,7 +13,7 @@ public class CronometroDecorator implements NivelDificuldade {
 	Timer timer2;
 	// int num1, num2;
 
-	final long segundos = (1000 * 10); // de 5 em 5 segundos
+	final long segundos = (1000 * 10); // de 10 em 10 segundos
 
 	public CronometroDecorator(NivelDificuldade pergunta) {
 		this.pergunta = pergunta;
